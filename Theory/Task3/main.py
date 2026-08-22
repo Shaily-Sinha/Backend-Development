@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, Query
+import uvicorn
 from pydantic import BaseModel
 from typing import Optional, List
 
@@ -81,3 +82,6 @@ def delete_student(student_id: int):
             students.pop(i)
             return
     raise HTTPException(status_code=404, detail="Student not found")
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=5000, reload=True)
