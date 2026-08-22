@@ -24,6 +24,21 @@ students: List[Student] = [
 
 next_id = 4
 
+@app.get("/")
+def read_root():
+    data = {
+        "sapid": 590011390,
+        "name": "Shaily Sinha",
+        "branch": "CSE",
+        "endpoints": {
+            "GET /students": "List all students or filter by branch",
+            "GET /students/{student_id}": "Get a student by ID",
+            "POST /students": "Create a new student",
+            "PUT /studnets/{student_id}": "Update an existing student",
+            "DELETE /students/{studnet_id}": "Delete a student by ID"
+        }
+    }
+    return data
 
 @app.get("/students", response_model=List[Student])
 def list_students(branch: Optional[str] = Query(None)):
