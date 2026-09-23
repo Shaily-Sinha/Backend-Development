@@ -7,7 +7,6 @@
 
     <title>Notes App</title>
 
-    <!-- Connect CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,9 +14,17 @@
 
     <div class="container">
 
-        <h1>My Notes</h1>
+        <!-- Header -->
+        <header class="header">
 
-        <!-- Section for adding a new note -->
+            <h1>My Notes</h1>
+
+            <button id="themeBtn">🌙 Dark Mode</button>
+
+        </header>
+
+
+        <!-- Add Note Section -->
         <div class="note-form">
 
             <textarea
@@ -26,23 +33,81 @@
                 rows="4">
             </textarea>
 
-            <button id="addNoteBtn">Add Note</button>
+            <!-- Category -->
+            <input
+                type="text"
+                id="categoryInput"
+                placeholder="Category (e.g. Study, Work, Personal)"
+            >
+
+            <!-- Add Button -->
+            <button id="addNoteBtn">
+                Add Note
+            </button>
 
         </div>
 
-        <!-- Section where notes will be displayed -->
+
+        <!-- Search and Filter -->
+        <div class="controls">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search notes..."
+            >
+
+            <select id="filterSelect">
+
+                <option value="all">All Notes</option>
+
+                <option value="active">
+                    Active
+                </option>
+
+                <option value="completed">
+                    Completed
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Import / Export -->
+        <div class="file-controls">
+
+            <button id="exportBtn">
+                Export JSON
+            </button>
+
+            <button id="importBtn">
+                Import JSON
+            </button>
+
+            <!-- Hidden file input -->
+            <input
+                type="file"
+                id="importInput"
+                accept=".json"
+                hidden
+            >
+
+        </div>
+
+
+        <!-- Notes -->
         <div id="notesContainer">
 
-            <!-- JavaScript will add notes here -->
+            <!-- JavaScript will generate notes here -->
 
         </div>
 
     </div>
 
-    <!-- Connect JavaScript file -->
+
     <script src="script.js"></script>
 
 </body>
 
 </html>
-

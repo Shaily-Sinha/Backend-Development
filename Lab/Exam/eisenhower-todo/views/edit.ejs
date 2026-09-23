@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task - Eisenhower Todo</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <main class="container form-container">
+        <a class="back-link" href="/">&larr; Back to matrix</a>
+        <h1>Edit Task</h1>
+
+        <form class="task-form" action="/tasks/<%= task._id %>/update" method="POST">
+            <label for="title">Title <span aria-hidden="true">*</span></label>
+            <input id="title" name="title" type="text" maxlength="120" value="<%= task.title %>" required autofocus>
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="5" maxlength="1000"><%= task.description %></textarea>
+
+            <label for="category">Category</label>
+            <input id="category" name="category" type="text" maxlength="50" value="<%= task.category || 'General' %>">
+
+            <label for="tags">Tags</label>
+            <input id="tags" name="tags" type="text" maxlength="200" value="<%= (task.tags || []).join(', ') %>" placeholder="Example: exam, javascript">
+            <p class="field-hint">Separate multiple tags with commas.</p>
+
+            <label for="dueDate">Due date</label>
+            <input id="dueDate" name="dueDate" type="date" value="<%= task.dueDate || '' %>">
+
+            <fieldset>
+                <legend>Priority</legend>
+                <div class="checkbox">
+                    <input id="isUrgent" name="isUrgent" type="checkbox" <%= task.isUrgent ? "checked" : "" %>>
+                    <label for="isUrgent">Urgent</label>
+                </div>
+                <div class="checkbox">
+                    <input id="isImportant" name="isImportant" type="checkbox" <%= task.isImportant ? "checked" : "" %>>
+                    <label for="isImportant">Important</label>
+                </div>
+            </fieldset>
+
+            <button type="submit">Update Task</button>
+        </form>
+    </main>
+</body>
+</html>
