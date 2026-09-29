@@ -11,14 +11,6 @@ const client = new MongoClient(mongoURL);
 
 let tasksCollection;
 
-function normaliseTags(tags) {
-    return (tags || "")
-        .split(",")
-        .map((tag) => tag.trim().toLowerCase())
-        .filter(Boolean)
-        .filter((tag, index, allTags) => allTags.indexOf(tag) === index);
-}
-
 // -------------------------
 // Middleware
 // -------------------------
@@ -53,34 +45,13 @@ app.get("/", async (req, res) => {
 
     try {
 
-        const allTasks = await tasksCollection
+        const storedTasks = await tasksCollection
             .find()
             .sort({ createdAt: -1 })
             .toArray();
 
-        const category = (req.query.category || "").trim();
-        const tag = (req.query.tag || "").trim().toLowerCase();
-
-        const tasks = allTasks
-            .map((task) => ({
-                ...task,
-                category: task.category || "General",
-                tags: Array.isArray(task.tags) ? task.tags : [],
-                dueDate: task.dueDate || ""
-            }))
-            .filter((task) => !category || task.category === category)
-            .filter((task) => !tag || task.tags.includes(tag));
-
-        const categories = [...new Set(allTasks.map((task) => task.category || "General"))]
-            .sort((first, second) => first.localeCompare(second));
-        const tags = [...new Set(allTasks.flatMap((task) => task.tags || []))]
-            .sort((first, second) => first.localeCompare(second));
-
         res.render("index", {
-            tasks,
-            categories,
-            tags,
-            filters: { category, tag }
+            tasks: storedTasks
         });
 
     } catch (error) {
@@ -117,8 +88,6 @@ app.post("/tasks", async (req, res) => {
             description,
             isUrgent,
             isImportant,
-            category,
-            tags,
             dueDate
         } = req.body;
 
@@ -140,10 +109,6 @@ app.post("/tasks", async (req, res) => {
             isUrgent: isUrgent === "on",
 
             isImportant: isImportant === "on",
-
-            category: category?.trim() || "General",
-
-            tags: normaliseTags(tags),
 
             dueDate: dueDate || "",
 
@@ -211,7 +176,7 @@ app.post("/tasks/:id/update", async (req, res) => {
     try {
 
         const id = req.params.id;
-        const { title, description, isUrgent, isImportant, category, tags, dueDate } = req.body;
+        const { title, description, isUrgent, isImportant, dueDate } = req.body;
 
         if (!ObjectId.isValid(id)) {
             return res.status(400).send("Invalid task ID");
@@ -229,8 +194,6 @@ app.post("/tasks/:id/update", async (req, res) => {
                     description: description || "",
                     isUrgent: isUrgent === "on",
                     isImportant: isImportant === "on",
-                    category: category?.trim() || "General",
-                    tags: normaliseTags(tags),
                     dueDate: dueDate || "",
                     updatedAt: new Date()
                 }

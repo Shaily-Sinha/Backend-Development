@@ -65,36 +65,6 @@ button:hover {
     background: #333;
 }
 
-.filter-form {
-    display: flex;
-    align-items: end;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin: 24px 0 10px;
-    padding: 16px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.filter-form label {
-    margin-top: 0;
-}
-
-.filter-form select {
-    min-width: 175px;
-    padding: 8px;
-}
-
-.clear-link {
-    padding: 8px 0;
-    color: #222;
-}
-
-.filter-summary {
-    color: #555;
-}
-
 .matrix {
     display: grid;
 
@@ -164,28 +134,6 @@ button:hover {
 
 .task p {
     margin-bottom: 10px;
-}
-
-.task-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin: 10px 0;
-}
-
-.category-chip,
-.tag-chip {
-    padding: 3px 7px;
-    border-radius: 999px;
-    font-size: 0.85rem;
-}
-
-.category-chip {
-    background: #dcecf3;
-}
-
-.tag-chip {
-    background: #e6e2f5;
 }
 
 .due-date {
@@ -281,12 +229,6 @@ legend {
     padding: 0 5px;
 }
 
-.field-hint {
-    margin: 5px 0 0;
-    color: #666;
-    font-size: 0.9rem;
-}
-
 @media (max-width: 700px) {
     body {
         padding: 16px;
@@ -301,12 +243,4 @@ legend {
         grid-template-columns: 1fr;
     }
 
-    .filter-form {
-        align-items: stretch;
-        flex-direction: column;
-    }
-
-    .filter-form select {
-        width: 100%;
-    }
 }

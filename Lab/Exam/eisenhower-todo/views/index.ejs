@@ -23,33 +23,6 @@
             <a class="primary-link" href="/tasks/new">Add New Task</a>
         </header>
 
-        <form class="filter-form" action="/" method="GET">
-            <div>
-                <label for="filter-category">Category</label>
-                <select id="filter-category" name="category">
-                    <option value="">All categories</option>
-                    <% categories.forEach(category => { %>
-                        <option value="<%= category %>" <%= filters.category === category ? "selected" : "" %>><%= category %></option>
-                    <% }) %>
-                </select>
-            </div>
-            <div>
-                <label for="filter-tag">Tag</label>
-                <select id="filter-tag" name="tag">
-                    <option value="">All tags</option>
-                    <% tags.forEach(tag => { %>
-                        <option value="<%= tag %>" <%= filters.tag === tag ? "selected" : "" %>><%= tag %></option>
-                    <% }) %>
-                </select>
-            </div>
-            <button type="submit">Filter</button>
-            <a class="clear-link" href="/">Clear</a>
-        </form>
-
-        <% if (filters.category || filters.tag) { %>
-            <p class="filter-summary">Showing <%= tasks.length %> matching task<%= tasks.length === 1 ? "" : "s" %>.</p>
-        <% } %>
-
         <section class="matrix" aria-label="Eisenhower matrix">
             <% quadrants.forEach(quadrant => { %>
                 <% const quadrantTasks = tasks.filter(quadrant.matches); %>
@@ -72,12 +45,6 @@
                             <% if (task.description) { %>
                                 <p><%= task.description %></p>
                             <% } %>
-                            <div class="task-meta">
-                                <span class="category-chip"><%= task.category %></span>
-                                <% task.tags.forEach(tag => { %>
-                                    <span class="tag-chip">#<%= tag %></span>
-                                <% }) %>
-                            </div>
                             <% if (task.createdAt) { %>
                                 <p class="created-date">Created: <%= new Date(task.createdAt).toLocaleDateString("en-IN") %></p>
                             <% } %>
