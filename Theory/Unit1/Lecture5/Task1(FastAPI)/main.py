@@ -35,8 +35,8 @@ def read_root():
             "GET /students": "List all students or filter by branch",
             "GET /students/{student_id}": "Get a student by ID",
             "POST /students": "Create a new student",
-            "PUT /studnets/{student_id}": "Update an existing student",
-            "DELETE /students/{studnet_id}": "Delete a student by ID"
+            "PUT /students/{student_id}": "Update an existing student",
+            "DELETE /students/{student_id}": "Delete a student by ID"
         }
     }
     return data
