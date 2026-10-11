@@ -13,13 +13,8 @@ The repository is focused on understanding backend development concepts through 
 Contains assignments completed as part of the Backend Development course.
 
 - [Assignments](./Assignments/)
-  - [Assignment 1](./Assignments/Assignment1/)
-    - [Notes App](./Assignments/Assignment1/notes-app/)
-    - [Assignment 1 README](./Assignments/Assignment1/README.md)
-  - [Assignment 2](./Assignments/Assignment2/)
-    - [PostgreSQL Implementation](./Assignments/Assignment2/postgresql.sql)
-    - [MongoDB Implementation](./Assignments/Assignment2/mongodb.js)
-    - [Assignment 2 README](./Assignments/Assignment2/README.md)
+  - [Assignment 1](./Assignments/Assignment1/README.md)
+  - [Assignment 2](./Assignments/Assignment2/README.md)
 
 ### Lab
 
