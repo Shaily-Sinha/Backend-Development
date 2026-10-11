@@ -237,23 +237,27 @@ Mongoose duplicate key error code `11000` is used to identify duplicate username
 
 ### Home Page
 
-![Home Page](screenshots/home.png)
+![Home Page](Screenshots/home.png)
 
 ### Successful Registration
 
-![Successful Registration](screenshots/registration.png)
+![Successful Registration](Screenshots/registration.png)
 
 ### Successful Login
 
-![Successful Login](screenshots/login.png)
+![Successful Login](Screenshots/login.png)
 
 ### Registered Users
 
-![Registered Users](screenshots/users.png)
+![Registered Users](Screenshots/users.png)
+
+### MongoDB Connection
+
+![Mongosh connection](Screenshots/connection.png)
 
 ### MongoDB Stored Documents
 
-![MongoDB Database](screenshots/mongodb.png)
+![MongoDB Database](Screenshots/mongodb.png)
 
 ---
 
