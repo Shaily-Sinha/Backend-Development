@@ -590,7 +590,7 @@ Through this experiment, the following backend concepts were practiced:
 
 ### JSON Response
 
-![JSON Response](screenshots/parta-json-response.png)
+![JSON Response](screenshots/parta-json-output.png)
 
 ---
 
